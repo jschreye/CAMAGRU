@@ -51,9 +51,7 @@ $router->addRoute('/updateProfile', function() {
 $router->addRoute('/login', function() {
     $loginController = new LoginController();
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $username = $_POST["username"];
-        $password = $_POST["password"];
-        $loginController->Login($username, $password);
+        $loginController->Login();
     }
     $loginController->Index();
 });
@@ -157,6 +155,19 @@ $router->addRoute('/reset-password', function() {
 $router->addRoute('/verify', function() {
     $VerifyController = new VerificationController();
     $VerifyController->verify();
+});
+
+$router->addRoute('/post/delete', function() {
+    // Vérifiez si l'utilisateur est connecté
+    if (isset($_SESSION['user'])) {
+        // Appelle le contrôleur pour gérer la suppression
+        $postController = new PostController();
+        $postController->delete();
+    } else {
+        // Si l'utilisateur n'est pas connecté, on le redirige vers la page de login
+        header("Location: /login");
+        exit();
+    }
 });
 
 return $router;

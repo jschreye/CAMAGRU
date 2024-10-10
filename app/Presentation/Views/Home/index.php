@@ -10,6 +10,7 @@
                                 <h6 class="card-title">Posté le : <?= date('d-m-Y', strtotime($post['created_date'])) ?></h6>
                                 <?php if (isset($_SESSION['user'])): ?>
                                     <form method="post" action="/post/like" class="like-form" data-post-id="<?= $post['id'] ?>">
+                                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
                                         <button class="btn btn-outline-primary btn-sm like-button" type="button">
                                             Like <i class="bi bi-hand-thumbs-up"></i>
                                         </button>
@@ -50,8 +51,11 @@
                                     <div class="input-group mb-3">
                                         <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
                                         <input type="text" name="comment" class="form-control" placeholder="Ajouter un commentaire..." required>
+                                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
                                         <button class="btn btn-outline-secondary" type="button">Commenter</button>
                                     </div>
+                                    <!-- Conteneur pour afficher les erreurs -->
+                                    <div class="error-message text-danger mt-2" style="display: none;"></div>
                                 </form>
                             </div>
                         </div>
@@ -91,25 +95,24 @@
     .nav-pagi{
         background: none;
     }
-    /* Enlever le contour bleu et l'effet de focus */
+    
     .pagination .page-link:focus, 
     .pagination .page-link:hover {
         outline: none;
         box-shadow: none;
-        color: #000; /* Assure que la couleur reste noire au survol */
-        text-decoration: none; /* Enlever la sous-ligne au hover */
+        color: #000; 
+        text-decoration: none;
     }
 
-    /* Style pour la page active */
     .pagination .page-item.active .page-link {
         color: #000;
         font-weight: bold;
-        text-decoration: underline; /* Marquer la page active avec un soulignement si souhaité */
+        text-decoration: underline;
     }
 
-    /* Optionnel : Centrer les liens de pagination */
     .pagination {
         justify-content: center;
     }
 </style>
+
 <script src="/Presentation/Assets/js/likecomment.js"></script>
