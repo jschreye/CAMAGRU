@@ -53,6 +53,14 @@ class PostController {
                 if (empty($photoData)) {
                     $errors[] = "Erreur : aucune photo sélectionnée.";
                 } else {
+
+                    $base64Prefix = substr($photoData, 0, strpos($photoData, ','));
+
+                    // Vérifier le type d'image avec les préfixes spécifiques
+                    if (strpos($base64Prefix, 'data:image/png') === false && strpos($base64Prefix, 'data:image/jpeg') === false) {
+                        $errors[] = "Erreur : seuls les fichiers PNG et JPEG sont autorisés.";
+                    }
+
                     // Calculer la taille réelle de l'image décodée à partir du base64
                     $photoSizeInBytes = (int)(strlen(base64_decode(explode(',', $photoData)[1])));
                     
