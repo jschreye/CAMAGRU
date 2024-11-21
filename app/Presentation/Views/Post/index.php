@@ -21,11 +21,10 @@
                     </div>
                 </div>
 
-                <!-- Boutons capture, réinitialiser et upload -->
                 <div class="d-flex justify-content-center mt-3">
-                    <button id="capture" class="btn btn-primary me-2" disabled>Prendre la photo</button>
+                    <button id="capture" class="btn btn-primary me-2">Prendre la photo</button>
                     <button id="reset" class="btn btn-warning">Recommencer</button>
-                    <button id="uploadPhotoButton" class="btn btn-secondary ms-2" disabled>Choisir une photo</button>
+                    <button id="uploadPhotoButton" class="btn btn-secondary ms-2">Choisir une photo</button>
                 </div>
 
                 <!-- Input pour uploader une image si pas de webcam -->
@@ -73,7 +72,7 @@
         <div class="card-footer text-center">
             <form id="photoForm" method="post" action="/post/save">
                 <input type="hidden" id="photo" name="photo">
-                <input type="hidden" id="stickerBase64" name="sticker">
+
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
                 <button type="submit" class="btn btn-success">Envoyer la photo</button>
             </form>
@@ -101,5 +100,6 @@
     #uploadPhotoButton {
         display: none;
     }
+    
 </style>
 <script src="/Presentation/Assets/js/post.js"></script>

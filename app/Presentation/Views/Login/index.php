@@ -22,6 +22,14 @@
                 <?php unset($_SESSION['error_message']); // Effacer le message d'erreur après l'affichage ?>
             <?php endif; ?>
 
+            <!-- Afficher le message de succès en session -->
+            <?php if (isset($_SESSION['success_message'])): ?>
+                <div class="alert alert-success">
+                    <?= htmlspecialchars($_SESSION['success_message']) ?>
+                </div>
+                <?php unset($_SESSION['success_message']); // Effacer le message de succès après l'affichage ?>
+            <?php endif; ?>
+            
             <form action="/login" method="post" class="d-flex flex-column align-items-center">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
                 <!-- Username -->
