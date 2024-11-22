@@ -89,12 +89,6 @@
         border-color: blue;
     }
 
-    /* Boutons désactivés par défaut */
-    #uploadPhotoButton,
-    #capture {
-        cursor: not-allowed;
-    }
-
     /* Masquer le bouton "Choisir une photo" par défaut */
     #uploadPhotoButton {
         display: none;

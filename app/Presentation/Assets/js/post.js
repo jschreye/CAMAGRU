@@ -131,7 +131,7 @@ document.querySelectorAll('.sticker-preview').forEach(sticker => {
         const stickerSrc = this.dataset.stickerSrc;
 
         // Vérifier si le sticker est déjà sélectionné
-        const index = selectedStickers.findIndex(s => s.src === stickerSrc);
+        const index = selectedStickers.findIndex(s => s.originalSrc === stickerSrc);
 
         if (index !== -1) {
             // Si déjà sélectionné, le retirer
@@ -150,6 +150,7 @@ document.querySelectorAll('.sticker-preview').forEach(sticker => {
 
                         const newSticker = {
                             src: base64StickerSrc,
+                            originalSrc: stickerSrc,
                             x: canvas.width - width - 10, // Position proche du bord droit avec marge de 10px
                             y: canvas.height - height - 10, // Position proche du bord bas avec marge de 10px
                             width: width,
