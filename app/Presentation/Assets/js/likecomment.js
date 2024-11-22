@@ -1,3 +1,4 @@
+// Gestion des "likes"
 document.querySelectorAll('.like-button').forEach(button => {
     button.addEventListener('click', function() {
         const form = this.closest('form');
@@ -16,8 +17,8 @@ document.querySelectorAll('.like-button').forEach(button => {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Mettre à jour l'interface utilisateur avec le nouveau nombre de likes et l'icône SVG
-                likeCountElement.innerHTML = `${data.likes}  <svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icon-tabler-filled icon-tabler-heart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" /></svg>`;
+                // Mettre à jour le nombre de likes
+                likeCountElement.innerHTML = `${data.likes} <svg xmlns="http://www.w3.org/2000/svg" style="color: red;" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="icon icon-tabler icon-tabler-filled icon-tabler-heart"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M6.979 3.074a6 6 0 0 1 4.988 1.425l.037 .033l.034 -.03a6 6 0 0 1 4.733 -1.44l.246 .036a6 6 0 0 1 3.364 10.008l-.18 .185l-.048 .041l-7.45 7.379a1 1 0 0 1 -1.313 .082l-.094 -.082l-7.493 -7.422a6 6 0 0 1 3.176 -10.215z" /></svg>`;
             } else {
                 console.error(data.message);  // Gérer l'erreur
             }
@@ -26,9 +27,10 @@ document.querySelectorAll('.like-button').forEach(button => {
     });
 });
 
+// Gestion des commentaires
 document.querySelectorAll('.comment-form').forEach(form => {
-    form.querySelector('button').addEventListener('click', function(event) {
-        event.preventDefault();  // Empêcher la soumission par défaut du formulaire
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();  // Empêcher la soumission classique du formulaire
 
         const postId = form.getAttribute('data-post-id');
         const commentInput = form.querySelector('input[name="comment"]');
@@ -37,8 +39,16 @@ document.querySelectorAll('.comment-form').forEach(form => {
         const commentText = commentInput.value.trim();
         const csrfTokenInput = form.querySelector('input[name="csrf_token"]');
         const csrfToken = csrfTokenInput.value;
+
         // Vérifier si le conteneur d'erreur existe
         if (!errorMessage) {
+            return;
+        }
+
+        // Validation simple (optionnel)
+        if (commentText === "") {
+            errorMessage.textContent = "Le commentaire ne peut pas être vide.";
+            errorMessage.style.display = 'block';
             return;
         }
 

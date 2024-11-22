@@ -65,7 +65,7 @@
                                         <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
                                         <input type="text" name="comment" class="form-control" placeholder="Ajouter un commentaire..." required>
                                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
-                                        <button class="btn btn-outline-secondary" type="button">Commenter</button>
+                                        <button class="btn btn-outline-secondary" type="submit">Commenter</button>
                                     </div>
                                     <div class="error-message text-danger mt-2" style="display: none;"></div>
                                 </form>
