@@ -37,7 +37,6 @@
                         <!-- Stickers plus petits avec bordure par défaut et curseur changé -->
                         <img src="/Presentation/Assets/img/pinguin.gif" class="sticker-preview m-2" style="width: 50px; height: 50px;" data-sticker-src="/Presentation/Assets/img/pinguin.gif" />
                         <img src="/Presentation/Assets/img/internet.jpeg" class="sticker-preview m-2" style="width: 50px; height: 50px;" data-sticker-src="/Presentation/Assets/img/internet.jpeg" />
-                        <img src="/Presentation/Assets/img/pinguin.gif" class="sticker-preview m-2" style="width: 50px; height: 50px;" data-sticker-src="/Presentation/Assets/img/pinguin.gif" />
                     </div>
                 </div>
             </div>
