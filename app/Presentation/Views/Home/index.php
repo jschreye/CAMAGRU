@@ -7,7 +7,7 @@
     <div class="row align-items-start">
         <?php if (!empty($posts)): ?>
             <?php foreach ($posts as $post): ?>
-                <div class="col-md-4 col-sm-6 mb-4"> <!-- 3 colonnes sur écran medium et 2 sur petits écrans -->
+                <div class="col-lg-4 col-md-6 col-sm-12 mb-4"> <!-- 3 colonnes sur écran medium et 2 sur petits écrans -->
                     <div class="card shadow h-100">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">

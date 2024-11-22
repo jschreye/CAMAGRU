@@ -20,7 +20,7 @@ class HomeController {
     {
         
         // Nombre de posts par page
-        $postsPerPage = 5;
+        $postsPerPage = 6;
 
         // Page actuelle (par défaut 1 si non spécifié)
         $currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
