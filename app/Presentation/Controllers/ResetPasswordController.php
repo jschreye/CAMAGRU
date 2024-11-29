@@ -13,6 +13,7 @@ class ResetPasswordController
     public function __construct() {
         $this->ResetPasswordService = new ResetPasswordService();
     }
+    
     public function resetPassword()
     {
         // Initialiser les erreurs

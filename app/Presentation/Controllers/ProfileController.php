@@ -59,6 +59,10 @@ class ProfileController {
             $errors[] = "Le nom d'utilisateur doit contenir au moins 3 caractères.";
         }
 
+        elseif (strlen($username) > 30) {
+            $errors[] = 'Le login ne doit pas contenir plus de 30 caractères.';
+        }
+
         // 2. Validation de l'email
         if (empty($email)) {
             $errors[] = "L'email est obligatoire.";
@@ -71,8 +75,9 @@ class ProfileController {
         if (!empty($password)) {
             if ($password !== $confirmPassword) {
                 $errors[] = "Les mots de passe ne correspondent pas.";
-            } elseif (!preg_match('/^(?=.*[A-Z]).{5,}$/', $password)) {
-                $errors[] = 'Le mot de passe doit contenir au moins 5 caractères et au moins une majuscule.';
+            } 
+            elseif (!preg_match('/^(?=.*[A-Z])(?=.*\d).{5,}$/', $password)) {
+                $errors[] = 'Le mot de passe doit contenir au moins 5 caractères, une majuscule et un chiffre.';
             }
         }
 

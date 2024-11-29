@@ -37,8 +37,8 @@ class RegisterService
             elseif (strlen($password) > 20) {
                 $errors[] = 'Le mot de passe ne doit pas contenir plus de 20 caractères.';
             }
-            elseif (!preg_match('/^(?=.*[A-Z]).{5,}$/', $password)) {
-                $errors[] = 'Le mot de passe doit contenir au moins 5 caractères et au moins une majuscule.';
+            elseif (!preg_match('/^(?=.*[A-Z])(?=.*\d).{5,}$/', $password)) {
+                $errors[] = 'Le mot de passe doit contenir au moins 5 caractères, une majuscule et un chiffre.';
             }
         }
     
@@ -46,7 +46,8 @@ class RegisterService
         if ($this->isUsernameTaken($username)) {
             $errors[] = 'Le nom d\'utilisateur est déjà pris.';
         }
-        elseif (strlen(string: $username) > 30) {
+        
+        elseif (strlen($username) > 30) {
             $errors[] = 'Le login ne doit pas contenir plus de 30 caractères.';
         }
 

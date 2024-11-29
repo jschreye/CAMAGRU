@@ -63,7 +63,7 @@
                                 <form method="post" action="/post/add_comment" class="comment-form" data-post-id="<?= $post['id'] ?>">
                                     <div class="input-group mb-3">
                                         <input type="hidden" name="post_id" value="<?= $post['id'] ?>">
-                                        <input type="text" name="comment" class="form-control" placeholder="Ajouter un commentaire..." required>
+                                        <input type="text" name="comment" class="form-control" placeholder="Commentaire..." required>
                                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars(GenerateCsrfToken()) ?>">
                                         <button class="btn btn-outline-secondary" type="submit">Commenter</button>
                                     </div>

@@ -89,6 +89,7 @@
         border-color: blue;
     }
 
+
     /* Masquer le bouton "Choisir une photo" par défaut */
     #uploadPhotoButton {
         display: none;

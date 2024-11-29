@@ -32,9 +32,10 @@ class ResetPasswordService
         }
 
         // Vérification que le mot de passe contient au moins 5 caractères et une majuscule
-        if (!empty($newPassword) && !preg_match('/^(?=.*[A-Z]).{5,}$/', $newPassword)) {
-            $errors[] = 'Le mot de passe doit contenir au moins 5 caractères et au moins une majuscule.';
+        if (!empty($newPassword) && !preg_match('/^(?=.*[A-Z])(?=.*\d).{5,}$/', $newPassword)) {
+            $errors[] = 'Le mot de passe doit contenir au moins 5 caractères, une majuscule et un chiffre.';
         }
+        
         if (strlen($newPassword) > 20) {
             $errors[] = 'Le mot de passe ne doit pas contenir plus de 20 caractères.';
         }
